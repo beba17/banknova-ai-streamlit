@@ -80,11 +80,11 @@ def load_css():
         .bn-dot { width: 7px; height: 7px; border-radius: 50%; background: #00e6c4; display: inline-block; box-shadow: 0 0 8px #00e6c4; }
 
         .bn-card {
-            background: rgba(255,255,255,0.045);
-            border: 1px solid rgba(255,255,255,0.12);
-            border-radius: 20px; padding: 26px;
-            backdrop-filter: blur(8px);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+            background: linear-gradient(165deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+            border: 1px solid rgba(255,255,255,0.14);
+            border-radius: 22px; padding: 28px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.06);
         }
 
         .bn-portfolio-label { font-size: 0.72rem; letter-spacing: 0.14em; color: #a6a6c2; text-transform: uppercase; }
@@ -98,54 +98,104 @@ def load_css():
         .bn-yoy { color: #00e6c4; font-weight: 700; font-size: 0.85rem; }
 
         .bn-mini-stat {
-            background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 14px; padding: 14px 16px;
+            position: relative;
+            background: linear-gradient(160deg, rgba(255,255,255,0.06), rgba(255,255,255,0.015));
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 16px; padding: 16px 18px;
+            transition: all 0.2s ease;
+            overflow: hidden;
         }
-        .bn-mini-label { font-size: 0.66rem; letter-spacing: 0.1em; color: #a6a6c2; text-transform: uppercase; }
-        .bn-mini-value { font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; font-weight: 700; color: #f4f4fb; margin-top: 2px; }
+        .bn-mini-stat::before {
+            content: ""; position: absolute; inset: 0; border-radius: 16px; padding: 1px;
+            background: linear-gradient(135deg, rgba(255,64,158,0.5), rgba(124,92,255,0.15), transparent 60%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor; mask-composite: exclude;
+            pointer-events: none;
+        }
+        .bn-mini-stat:hover { transform: translateY(-2px); border-color: rgba(255,64,158,0.4); box-shadow: 0 8px 24px rgba(124,92,255,0.25); }
+        .bn-mini-label { font-size: 0.64rem; letter-spacing: 0.12em; color: #9d9db8; text-transform: uppercase; font-weight: 600; }
+        .bn-mini-value {
+            font-family: 'JetBrains Mono', monospace; font-size: 1.28rem; font-weight: 800; margin-top: 4px;
+            background: linear-gradient(90deg, #ffffff, #e3ddff);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        div[data-testid="stMetric"] {
+            background: linear-gradient(160deg, rgba(255,255,255,0.06), rgba(255,255,255,0.015));
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 16px; padding: 16px 20px;
+            transition: all 0.2s ease;
+        }
+        div[data-testid="stMetric"]:hover { transform: translateY(-2px); border-color: rgba(0,230,196,0.4); box-shadow: 0 8px 24px rgba(0,230,196,0.18); }
+        div[data-testid="stMetricLabel"] { color: #9d9db8 !important; font-size: 0.72rem !important; letter-spacing: 0.1em; text-transform: uppercase; }
+        div[data-testid="stMetricValue"] {
+            font-family: 'JetBrains Mono', monospace !important; font-weight: 800 !important;
+            background: linear-gradient(90deg, #ffffff, #d9d3ff);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
 
         .bn-insight {
-            background: linear-gradient(135deg, rgba(255,64,158,0.12), rgba(124,92,255,0.12));
-            border: 1px solid rgba(255,255,255,0.16); border-radius: 16px;
-            padding: 16px 18px; font-size: 0.87rem; color: #ececfa; line-height: 1.55;
+            background: linear-gradient(135deg, rgba(255,64,158,0.14), rgba(124,92,255,0.14));
+            border: 1px solid rgba(255,255,255,0.18); border-radius: 18px;
+            padding: 18px 20px; font-size: 0.88rem; color: #f2f2fc; line-height: 1.6;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
         }
-        .bn-insight-title { font-size: 0.68rem; letter-spacing: 0.1em; color: #ff8fc4; text-transform: uppercase; font-weight: 700; margin-bottom: 6px; }
+        .bn-insight-title { font-size: 0.68rem; letter-spacing: 0.12em; color: #ff8fc4; text-transform: uppercase; font-weight: 800; margin-bottom: 8px; }
 
         .bn-feature-card {
-            background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.12);
-            border-radius: 18px; padding: 24px; height: 100%; transition: all 0.2s ease;
+            position: relative;
+            background: linear-gradient(165deg, rgba(255,255,255,0.055), rgba(255,255,255,0.015));
+            border: 1px solid rgba(255,255,255,0.14);
+            border-radius: 20px; padding: 26px; height: 100%; transition: all 0.25s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
-        .bn-feature-card:hover { border-color: rgba(255,64,158,0.5); transform: translateY(-2px); }
-        .bn-feature-icon { font-size: 1.5rem; margin-bottom: 12px; }
-        .bn-feature-title { font-weight: 700; font-size: 1.02rem; color: #fbfbff; margin-bottom: 8px; }
-        .bn-feature-desc { font-size: 0.86rem; color: #a6a6c2; line-height: 1.55; }
+        .bn-feature-card:hover {
+            border-color: rgba(255,64,158,0.55); transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(255,64,158,0.22);
+        }
+        .bn-feature-icon {
+            font-size: 1.6rem; margin-bottom: 14px; width: 48px; height: 48px;
+            display: flex; align-items: center; justify-content: center; border-radius: 14px;
+            background: linear-gradient(135deg, rgba(255,64,158,0.22), rgba(124,92,255,0.22));
+        }
+        .bn-feature-title { font-weight: 800; font-size: 1.04rem; color: #fbfbff; margin-bottom: 8px; letter-spacing: -0.01em; }
+        .bn-feature-desc { font-size: 0.87rem; color: #a6a6c2; line-height: 1.6; }
 
         .bn-section-heading {
-            font-size: 1.9rem; font-weight: 800; color: #fbfbff; margin-bottom: 0.3rem;
+            font-size: 1.95rem; font-weight: 800; color: #fbfbff; margin-bottom: 0.3rem; letter-spacing: -0.01em;
         }
-        .bn-section-sub { color: #a6a6c2; font-size: 0.95rem; margin-bottom: 1.8rem; }
+        .bn-section-sub { color: #a6a6c2; font-size: 0.96rem; margin-bottom: 1.8rem; }
 
         .bn-footer {
             border-top: 1px solid rgba(255,255,255,0.1); margin-top: 3rem; padding-top: 1.4rem;
             display: flex; justify-content: space-between; font-size: 0.8rem; color: #7a7a94; flex-wrap: wrap; gap: 10px;
         }
 
-        .bn-goal-card { background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 20px; }
-        .bn-goal-title { font-weight: 700; color: #f4f4fb; font-size: 0.95rem; margin-bottom: 10px; }
+        .bn-goal-card {
+            background: linear-gradient(165deg, rgba(255,255,255,0.055), rgba(255,255,255,0.015));
+            border: 1px solid rgba(255,255,255,0.14); border-radius: 18px; padding: 22px;
+            box-shadow: 0 10px 28px rgba(0,0,0,0.28); transition: all 0.2s ease;
+        }
+        .bn-goal-card:hover { border-color: rgba(124,92,255,0.4); }
+        .bn-goal-title { font-weight: 800; color: #f4f4fb; font-size: 0.98rem; margin-bottom: 12px; letter-spacing: -0.01em; }
         .bn-goal-percent { font-family: 'JetBrains Mono', monospace; color: #ff8fc4; font-weight: 800; }
 
-        .bn-score-ring { text-align: center; }
+        .bn-score-ring {
+            text-align: center;
+            background: linear-gradient(165deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)) !important;
+        }
         .bn-score-num {
-            font-family: 'JetBrains Mono', monospace; font-size: 2.6rem; font-weight: 800;
+            font-family: 'JetBrains Mono', monospace; font-size: 2.8rem; font-weight: 800;
             background: linear-gradient(90deg, #00e6c4, #7c5cff);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 40px rgba(0,230,196,0.3);
         }
 
         div.stButton > button {
             background: linear-gradient(135deg, #ff409e, #7c5cff);
             color: #fff; font-weight: 700; border: none; border-radius: 12px;
-            padding: 0.6rem 1.4rem; box-shadow: 0 4px 18px rgba(124,92,255,0.4);
-            transition: all 0.15s ease;
+            padding: 0.6rem 1.4rem; box-shadow: 0 6px 20px rgba(124,92,255,0.45);
+            transition: all 0.18s ease; letter-spacing: -0.01em;
         }
         div.stButton > button:hover { transform: translateY(-1px); box-shadow: 0 6px 22px rgba(255,64,158,0.5); color:#fff; }
         div.stButton > button:active { transform: translateY(0px); }
@@ -241,6 +291,16 @@ def top_nav():
 # ---------------------------------------------------------------------------
 # AI helper
 # ---------------------------------------------------------------------------
+@st.cache_data(show_spinner=False)
+def get_wealth_trend(total_lakhs_base):
+    rng = np.random.default_rng(42)
+    months = pd.date_range("2025-03-01", periods=12, freq="MS")
+    base = np.linspace(total_lakhs_base * 0.82 / 100000, total_lakhs_base / 100000, 12)
+    noise = rng.normal(0, 0.2, 12)
+    values = base + noise
+    return pd.DataFrame({"Month": months, "Wealth (₹ Lakhs)": values}).set_index("Month")
+
+
 def build_financial_context():
     s = st.session_state
     goals_txt = "\n".join(
@@ -363,12 +423,7 @@ def page_home():
             st.markdown(f'<div class="bn-mini-stat"><div class="bn-mini-label">Emergency</div><div class="bn-mini-value">₹{s.emergency/100000:.1f}L</div></div>', unsafe_allow_html=True)
 
         st.markdown("<div style='height:18px;'></div>", unsafe_allow_html=True)
-        rng = np.random.default_rng(42)
-        months = pd.date_range("2025-03-01", periods=12, freq="MS")
-        base = np.linspace(total * 0.82 / 100000, total / 100000, 12)
-        noise = rng.normal(0, 0.2, 12)
-        values = base + noise
-        chart_df = pd.DataFrame({"Month": months, "Wealth (₹ Lakhs)": values}).set_index("Month")
+        chart_df = get_wealth_trend(total)
         st.area_chart(chart_df, height=160, color="#ff409e")
 
         st.markdown(
